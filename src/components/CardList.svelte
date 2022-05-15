@@ -13,6 +13,6 @@
   .card-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3rem;
+    grid-gap: 6rem;
   }
 </style>
