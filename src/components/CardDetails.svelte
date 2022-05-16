@@ -9,12 +9,12 @@
       <div class="col-md-6 col-lg-4 column">
         <div class="card gr-1">
           <div class="txt">
+          
             <h1>{card.title}</h1>
-            <p>{card.result}</p>
+            <p>{card.data}</p>
           </div>
-          <a href="#">more</a>
           <div class="ico-card">
-            <i class="fa fa-rebel" />
+            <i class={card.icon} />
           </div>
         </div>
       </div>
@@ -24,18 +24,12 @@
 
 <style lang="scss">
   $gr-1: linear-gradient(170deg, #01e4f8 0%, #1d3ede 100%);
-  $gr-2: linear-gradient(170deg, #b4ec51 0%, #429321 100%);
-  $gr-3: linear-gradient(170deg, #c86dd7 0%, #3023ae 100%);
+
 
   .gr-1 {
     background: $gr-1;
   }
-  .gr-2 {
-    background: $gr-2;
-  }
-  .gr-3 {
-    background: $gr-3;
-  }
+
 
   * {
     transition: 0.5s;

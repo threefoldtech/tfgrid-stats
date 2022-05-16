@@ -1,13 +1,33 @@
 <script>
-  import CardStore from "../stores/CardStore";
+  import {CardStore, apiData} from "../stores/CardStore.ts";
   import CardDetails from "./CardDetails.svelte";
+  import { onMount } from "svelte";
+  onMount(async () => {
+    fetch("https://gridproxy.dev.grid.tf/stats")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(data.nodes);
+
+
+
+      apiData.set(data);
+    }).catch(error => {
+      console.log(error);
+      return [];
+    });
+  });
 </script>
 
-<div class="card-list">
+
+ <div class="card-list">
+
   {#each $CardStore as card (card.id)}
-    <CardDetails {card} />
-  {/each}
-</div>
+    <CardDetails {card} /> 
+  {/each} 
+
+
+</div> 
 
 <style>
   .card-list {
@@ -16,3 +36,6 @@
     grid-gap: 6rem;
   }
 </style>
+
+
+
