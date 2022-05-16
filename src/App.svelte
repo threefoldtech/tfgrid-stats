@@ -1,9 +1,10 @@
 <script>
   import CardList from "./components/CardList.svelte";
-  //   export let name;
+  import Map from "./components/Map.svelte";
 </script>
 
 <main>
+  <Map />
   <CardList />
 </main>
 
