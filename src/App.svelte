@@ -1,30 +1,22 @@
 <script lang="ts">
-  import { onMount } from "svelte";
 
   import Map from "./components/Map2.svelte";
+  import CardList from './components/CardList.svelte';
   import type { MapActions } from "./types/map";
 
-  let mapActions: MapActions;
+  import { onMount } from "svelte";
 
+  let mapActions: MapActions;
+  
   onMount(() => {
     mapActions.update("egypt", "red");
   });
+
+
 </script>
 
 <Map bind:mapActions />
+<CardList />
 
-<!-- <script lang="ts">
-  import CardList from "./components/CardList.svelte";
-  import Map from "./components/Map.svelte";
-</script>
 
-<main>
-  <Map />
-  <CardList />
-</main>
 
-<style>
-  main {
-    padding: 6rem;
-  }
-</style> -->

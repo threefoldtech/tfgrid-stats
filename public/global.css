@@ -61,11 +61,3 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
-
-
-/* hover effect */
-
-
-/* .card:hover .card-title{
-	margin-left: 0;
-} */

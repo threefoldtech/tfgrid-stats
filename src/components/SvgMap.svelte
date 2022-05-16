@@ -3,7 +3,7 @@
 </script>
 
 <svg
-  fill="#ececec"
+  fill="#4cbbd9"
   width="100%"
   stroke="#ccc"
   viewBox="-25 -25 1060 680"
