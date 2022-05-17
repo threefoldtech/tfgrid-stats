@@ -118,16 +118,19 @@
 <div class:lds-dual-ring={loading} />
 
 <div class="card-list">
-  {#each stats as card (card.id)}
-    <CardDetails {card} />
+  {#each stats as card, index (card.id)}
+    {#if index % 2 == 0}
+      <CardDetails {card} secondaryTitle={false} />
+    {:else}
+      <CardDetails {card} secondaryDetails={true} />
+    {/if}
   {/each}
 </div>
 
 <style>
   .card-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 6rem;
+    grid-template-columns: repeat(6, 1fr);
   }
   .lds-dual-ring {
     display: inline-block;

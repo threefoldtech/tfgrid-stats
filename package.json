@@ -26,12 +26,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "fusioncharts": "^3.18.0",
-    "node-sass": "^7.0.1",
-    "sirv-cli": "^2.0.0",
-    "svelte-fusioncharts": "^1.0.0",
-    "svelte-map-leaflet": "^0.5.0",
-    "svelte-preprocess": "^4.10.6",
-    "world-map": "^0.0.9"
+    "sirv-cli": "^2.0.0"
   }
 }
