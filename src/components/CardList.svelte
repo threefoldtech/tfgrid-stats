@@ -41,75 +41,75 @@
         return error;
       });
   });
-
+  
   function setStats(res: IStatsRes): void {
     stats = [
       {
         id: 0,
         data: res.nodes.toString(),
         title: "Nodes Online",
-        icon: "mdi-laptop",
+        icon: "/assets/node.svg",
       },
       {
         id: 1,
         data: res.farms.toString(),
         title: "Farms",
-        icon: "mdi-tractor",
+        icon: "/assets/farms.svg",
       },
       {
         id: 2,
         data: res.countries.toString(),
         title: "Countries",
-        icon: "mdi-earth",
+        icon: "/assets/countries.svg",
       },
       {
         id: 3,
         data: res.totalCru.toString(),
         title: "CPUs Online",
-        icon: "mdi-cpu-64-bit",
+        icon: "/assets/cpu.svg",
       },
       {
         id: 4,
         data: toTeraOrGiga(res.totalSru.toString()),
         title: "SSD Storage",
-        icon: "mdi-nas",
+        icon: "/assets/ssd.svg",
       },
       {
         id: 5,
         data: toTeraOrGiga(res.totalHru.toString()),
         title: "HDD Storage",
-        icon: "mdi-harddisk",
+        icon: "/assets/hdd.svg",
       },
       {
         id: 6,
         data: toTeraOrGiga(res.totalMru.toString()),
         title: "RAM Online",
-        icon: "mdi-memory",
+        icon: "/assets/ram.svg",
       },
       {
         id: 7,
         data: res.accessNodes.toString(),
         title: "Access Nodes",
-        icon: "mdi-gate",
+        icon: "/assets/access.svg",
       },
       {
         id: 8,
         data: res.gateways.toString(),
         title: "Gateways Online",
-        icon: "mdi-boom-gate-outline",
+        icon: "/assets/gateways.svg",
       },
-      { id: 9, data: res.twins.toString(), title: "Twins", icon: "mdi-brain" },
+      { id: 9, data: res.twins.toString(), title: "Twins", icon: "/assets/twin.svg" },
       {
         id: 10,
         data: res.publicIps.toString(),
         title: "Public IPs",
-        icon: "mdi-access-point",
+        icon: "/assets/access.svg",
       },
       {
         id: 11,
         data: res.contracts.toString(),
         title: "Contracts",
-        icon: "mdi-file-document-edit-outline",
+        icon: "/assets/contract.svg",
       },
     ];
   }

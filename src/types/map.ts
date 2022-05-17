@@ -1,3 +1,3 @@
 export interface MapActions {
-  update(country: string, color: string | null): void;
+  update(country: string, nodes: number | null): void;
 }
