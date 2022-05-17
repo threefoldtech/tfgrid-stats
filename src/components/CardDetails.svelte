@@ -13,7 +13,9 @@
       <p>{card.title}</p>
     </div>
     <div class="card-details" class:details-secondary={secondaryDetails}>
-      <div>icon</div>
+      <div>
+        <img src="/assets/" alt="">
+      </div>
       <div>{card.result}</div>
     </div>
 
