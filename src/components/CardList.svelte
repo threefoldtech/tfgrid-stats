@@ -27,12 +27,19 @@
   }
 
   let stats: IStats[] = [];
-
+  let loading = true;
   onMount(() => {
     axios
       .get<IStatsRes>("/stats")
       .then((res) => res.data)
-      .then(setStats);
+      .then(setStats)
+      .finally(() => {
+        loading = false;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
   });
 
   function setStats(res: IStatsRes): void {
@@ -108,6 +115,8 @@
   }
 </script>
 
+<div class:lds-dual-ring={loading} />
+
 <div class="card-list">
   {#each stats as card (card.id)}
     <CardDetails {card} />
@@ -119,5 +128,29 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 6rem;
+  }
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid black;
+    border-color: black transparent black transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
