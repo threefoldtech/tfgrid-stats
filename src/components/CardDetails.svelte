@@ -9,11 +9,11 @@
       <div class="col-md-6 col-lg-4 column">
         <div class="card gr-1">
           <div class="txt">
-            <!-- <h1>{card.title}</h1>
-            <p>{card.data}</p> -->
+            <h1>{card.title}</h1>
+            <p>{card.data}</p>
           </div>
           <div class="ico-card">
-            <!-- <i class={card.icon} /> -->
+            <i class={card.icon} />
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
   </div>
 </Card>
 
-<!-- <style lang="scss">
+<style lang="scss">
   $gr-1: linear-gradient(170deg, #01e4f8 0%, #1d3ede 100%);
 
   .gr-1 {
@@ -129,4 +129,4 @@
       z-index: 0;
     }
   }
-</style> -->
+</style>
