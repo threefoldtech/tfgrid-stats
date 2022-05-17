@@ -42,6 +42,10 @@
 
   const handleHover = (e) => {
     controllTooltip(e);
+    
+    if (e.target instanceof SVGPathElement) {
+      dispatch('handleHover', e);
+    }
   }
 
 
