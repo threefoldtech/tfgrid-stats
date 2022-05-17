@@ -1,9 +1,9 @@
 <script>
   import Card from "./Card.svelte";
   export let card;
-  export let primaryTitle = false;
+  export let primaryTitle = true;
   export let secondaryTitle = true;
-  export let secondaryDetails = false
+  export let secondaryDetails = false;
 
 </script>
 
@@ -21,27 +21,30 @@
 </Card>
 
 <style>
+  p{
+    margin: 0;
+  }
   .card{
     display: grid;
-    grid-template-rows: 1fr 4fr;
-    height: 10rem;
+    grid-template-rows: 1fr 3fr;
   }
 
   .card-details{
     display: grid;
     grid-template-columns: 1fr 3fr;
     text-align: end;
+    align-content: center;
     padding: .5rem 1rem;
     font-size: 23px;
-    color: #333333;
-    align-content: center;
+    color: #353434b6;
   }
-
-
   .title{
-    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 2.5rem;
     color: #fff;
-    font-weight: bold;
+    font-weight: 500;
     text-align: end;
     padding: 0 1rem;
   }
@@ -54,6 +57,6 @@
   }
 
   .details-secondary{
-    background-color: #e0dcdc;
+    background-color: #ebe7e7;
   }
 </style>

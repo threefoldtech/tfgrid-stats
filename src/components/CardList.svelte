@@ -8,7 +8,7 @@
 <div class="card-list">
   {#each $CardStore as card, index (card.id)}
   {#if index % 2 == 0}
-    <CardDetails {card} primaryTitle={true} secondaryTitle={false}/>
+    <CardDetails {card} secondaryTitle={false}/>
     {:else}
     <CardDetails {card} secondaryDetails={true} />
   {/if}
