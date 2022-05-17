@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "fusioncharts": "^3.18.0",
+    "axios": "^0.16.1",
     "node-sass": "^7.0.1",
     "sirv-cli": "^2.0.0",
     "svelte-fusioncharts": "^1.0.0",

@@ -9,7 +9,7 @@
 //   },
 
 import { writable, derived } from 'svelte/store';
-import toTeraOrGiga from "../filters/toTeraOrGiga.ts";
+import toTeraOrGiga from "../filters/toTeraOrGiga";
 
 export const apiData = writable([]);
 
@@ -17,7 +17,7 @@ export const apiData = writable([]);
 For our use case, we only care about the drink names, not the other information.
 Here, we'll create a derived store to hold the drink names.
 **/
-export const CardStore = derived(apiData, ($apiData) => {
+export const CardStore = derived(apiData, ($apiData:any) => {
     if(apiData){ 
 console.log($apiData.nodes);
         return [
