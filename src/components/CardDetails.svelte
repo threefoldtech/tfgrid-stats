@@ -4,41 +4,43 @@
   export let primaryTitle = true;
   export let secondaryTitle = true;
   export let secondaryDetails = false;
-
 </script>
 
 <Card>
   <div class="card">
-    <div class='title' class:title-primary={primaryTitle} class:title-secondary={secondaryTitle}>
+    <div
+      class="title"
+      class:title-primary={primaryTitle}
+      class:title-secondary={secondaryTitle}
+    >
       <p>{card.title}</p>
     </div>
     <div class="card-details" class:details-secondary={secondaryDetails}>
       <div>icon</div>
-      <div>{card.result}</div>
+      <div>{card.data}</div>
     </div>
-
   </div>
 </Card>
 
 <style>
-  p{
+  p {
     margin: 0;
   }
-  .card{
+  .card {
     display: grid;
     grid-template-rows: 1fr 3fr;
   }
 
-  .card-details{
+  .card-details {
     display: grid;
     grid-template-columns: 1fr 3fr;
     text-align: end;
     align-content: center;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     font-size: 23px;
     color: #353434b6;
   }
-  .title{
+  .title {
     display: flex;
     align-items: center;
     justify-content: end;
@@ -48,15 +50,15 @@
     text-align: end;
     padding: 0 1rem;
   }
-  .title-primary{
+  .title-primary {
     background-color: #1982b1;
   }
 
-  .title-secondary{
-    background-color:  #4cbbd9;
+  .title-secondary {
+    background-color: #4cbbd9;
   }
 
-  .details-secondary{
+  .details-secondary {
     background-color: #ebe7e7;
   }
 </style>
