@@ -52,7 +52,7 @@
         return [];
       });
   });
-  
+
   function setStats(res: IStatsRes): void {
     stats = [
       {
@@ -109,7 +109,12 @@
         title: "Gateways Online",
         icon: "/assets/gateways.svg",
       },
-      { id: 9, data: res.twins.toString(), title: "Twins", icon: "/assets/twin.svg" },
+      {
+        id: 9,
+        data: res.twins.toString(),
+        title: "Twins",
+        icon: "/assets/twin.svg",
+      },
       {
         id: 10,
         data: res.publicIps.toString(),
