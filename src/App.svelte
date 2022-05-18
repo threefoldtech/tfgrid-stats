@@ -1,10 +1,7 @@
 <script lang="ts">
   import Map from "./components/Map2.svelte";
   import CardList from "./components/CardList.svelte";
-  import type { MapActions } from "./types/map";
 
-
-  let mapActions: MapActions;
 
   const handleHover = (e) => {
     console.log(e.detail);

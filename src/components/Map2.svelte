@@ -1,7 +1,8 @@
 <script lang="ts">
-  import type { MapActions } from "../types/map";
   import SvgMap from "./SvgMap.svelte";
   import {createEventDispatcher} from 'svelte';
+  import { fade } from 'svelte/transition';
+
 
   export let country = null;
   export let nodes = 0;
@@ -23,17 +24,18 @@
     country = e.target.getAttribute("title")      
   }
 
-  const destroyTooltip = (e) => {    
+  const destroyTooltip = (e) => { 
     if (e.target instanceof SVGPathElement) {
-      dispatch('destroyTooltip', e);
       let el = document.querySelector('#nodes') as HTMLElement | null;
       el.style.opacity = '0';
-      el.style.visibility = 'hidden';
-      el.style.left = '0px';
-      el.style.top = '0px';
+      el.style.display = 'hidden';
       country = null;
+      nodes = 0;
+      dispatch('destroyTooltip', e);
     }
   }
+
+
 
 
 
@@ -60,7 +62,8 @@
     background-color: #fff;
     visibility: hidden;
     opacity: 0;
-    transition: visibility .4s, opacity 0.5s ease-in-out;
+    transition-property: opacity, left, top,  ease-in-out;
+    transition-duration: 0, 1s, 1s;
     position: absolute;
   }
 
