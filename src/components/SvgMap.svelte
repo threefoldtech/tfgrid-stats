@@ -7,6 +7,7 @@
 <svg
   fill="#4cbbd9"
   width="100%"
+  height="50%"
   viewBox="-25 -25 1060 680"
   bind:this={map} on:mouseover on:mouseout>
   <path
