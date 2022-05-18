@@ -1,35 +1,48 @@
 <script lang="ts">
   import Map from "./components/Map2.svelte";
   import CardList from "./components/CardList.svelte";
-  import type { MapActions } from "./types/map";
 
-  import { onMount } from "svelte";
-
-  let mapActions: MapActions;
-
-  onMount(() => {
-    mapActions.update("egypt", "red");
-  });
 
   const handleHover = (e) => {
     console.log(e.detail);
   };
+
+  const destroyTooltip = (e) => {
+    console.log('destroyed', e.detail); 
+  }
 </script>
 
-<div class="map">
-  <Map bind:mapActions on:handleHover={handleHover} />
-</div>
 
-<div class="state-title">
-  <h2>Statistics</h2>
-</div>
-<CardList />
+<main>
+  <h2 class="node-title">Node Distribution</h2>
+  <div class="map-container">
+    <div class="map">
+      <Map on:handleHover={handleHover} on:destroyTooltip={destroyTooltip} />
+    </div>
+  </div>
+
+  
+  <div class="state-title">
+    <h2>Statistics</h2>
+  </div>
+  <CardList />
+</main>
+
 
 <style>
-  .map {
+  main{
     background-color: #ebe7e7;
   }
-  .state-title {
+
+  .map-container{
+    display: flex;
+    justify-content: center;
+  }
+  .map {
+    width: 65rem;
+    display: inline-block;
+  }
+  .state-title, .node-title {
     background-color: #ebe7e7;
     color: #353434b6;
   }
