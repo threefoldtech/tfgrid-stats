@@ -40,17 +40,6 @@
         console.log(error);
         return error;
       });
-    fetch("https://gridproxy.dev.grid.tf/nodes")
-      .then((response) => response.json())
-      .then((data) => {
-        for (var d of data) {
-          console.log(d.country);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        return [];
-      });
   });
 
   function setStats(res: IStatsRes): void {

@@ -26,6 +26,7 @@
       .then((data) => {
         for (var d of data) {
           if (d.country == country) {
+            console.log(d.country);
             NoNodes = NoNodes + 1;
           }
         }
@@ -44,6 +45,7 @@
       el.style.display = "hidden";
       country = null;
       nodes = 0;
+      NoNodes = 0;
       dispatch("destroyTooltip", e);
     }
   };
