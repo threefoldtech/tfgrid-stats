@@ -40,8 +40,19 @@
         console.log(error);
         return error;
       });
+    fetch("https://gridproxy.dev.grid.tf/nodes")
+      .then((response) => response.json())
+      .then((data) => {
+        for (var d of data) {
+          console.log(d.country);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        return [];
+      });
   });
-  
+
   function setStats(res: IStatsRes): void {
     stats = [
       {
@@ -98,7 +109,12 @@
         title: "Gateways Online",
         icon: "/assets/gateways.svg",
       },
-      { id: 9, data: res.twins.toString(), title: "Twins", icon: "/assets/twin.svg" },
+      {
+        id: 9,
+        data: res.twins.toString(),
+        title: "Twins",
+        icon: "/assets/twin.svg",
+      },
       {
         id: 10,
         data: res.publicIps.toString(),
