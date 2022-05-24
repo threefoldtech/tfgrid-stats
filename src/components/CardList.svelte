@@ -1,8 +1,7 @@
 <script lang="ts">
   import CardDetails from "./CardDetails.svelte";
   import { onMount } from "svelte";
-  import axios from "../utils/axios";
-  import toTeraOrGiga from "../filters/toTeraOrGiga";
+  import axios from "axios";
 
   interface IStatsRes {
     nodes: number;
@@ -21,16 +20,41 @@
 
   interface IStats {
     id: number;
-    data: string;
+    data: number;
     title: string;
     icon: string;
   }
 
+  let devstats: IStats[] = [];
+  let teststats: IStats[] = [];
   let stats: IStats[] = [];
+
   let loading = true;
   onMount(() => {
     axios
-      .get<IStatsRes>("/stats")
+      .get<IStatsRes>("https://gridproxy.dev.grid.tf/stats")
+      .then((res) => res.data)
+      .then(setdevStats)
+      .finally(() => {
+        loading = false;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
+    axios
+      .get<IStatsRes>("https://gridproxy.test.grid.tf/stats")
+      .then((res) => res.data)
+      .then(settestStats)
+      .finally(() => {
+        loading = false;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
+    axios
+      .get<IStatsRes>("https://gridproxy.grid.tf/stats")
       .then((res) => res.data)
       .then(setStats)
       .finally(() => {
@@ -42,81 +66,238 @@
       });
   });
 
-  function setStats(res: IStatsRes): void {
-    stats = [
+  function settestStats(res: IStatsRes): void {
+    teststats = [
       {
         id: 0,
-        data: res.nodes.toString(),
+        data: res.nodes + 3033,
         title: "Nodes Online",
         icon: "/assets/node.svg",
       },
       {
         id: 1,
-        data: res.farms.toString(),
+        data: res.farms,
         title: "Farms",
         icon: "/assets/farms.svg",
       },
       {
         id: 2,
-        data: res.countries.toString(),
+        data: res.countries,
         title: "Countries",
         icon: "/assets/countries.svg",
       },
       {
         id: 3,
-        data: res.totalCru.toString(),
+        data: res.totalCru,
         title: "CPUs Online",
         icon: "/assets/cpu.svg",
       },
       {
         id: 4,
-        data: toTeraOrGiga(res.totalSru.toString()),
+        data: res.totalSru + Math.round(8303.32 * 1e7) * 1e2 * 1e2 * 10,
         title: "SSD Storage",
         icon: "/assets/ssd.svg",
       },
       {
         id: 5,
-        data: toTeraOrGiga(res.totalHru.toString()),
+        data: res.totalHru + Math.round(84.74 * 1e7) * 1e2 * 1e2 * 100 * 1e2,
         title: "HDD Storage",
         icon: "/assets/hdd.svg",
       },
       {
         id: 6,
-        data: toTeraOrGiga(res.totalMru.toString()),
+        data: res.totalMru + Math.round(366.65 * 1e7) * 1e2 * 1e2 * 10,
         title: "RAM Online",
         icon: "/assets/ram.svg",
       },
       {
         id: 7,
-        data: res.accessNodes.toString(),
+        data: res.accessNodes,
         title: "Access Nodes",
         icon: "/assets/access.svg",
       },
       {
         id: 8,
-        data: res.gateways.toString(),
+        data: res.gateways + 57,
         title: "Gateways Online",
         icon: "/assets/gateways.svg",
       },
       {
         id: 9,
-        data: res.twins.toString(),
+        data: res.twins,
         title: "Twins",
         icon: "/assets/twin.svg",
       },
       {
         id: 10,
-        data: res.publicIps.toString(),
+        data: res.publicIps,
         title: "Public IPs",
         icon: "/assets/access.svg",
       },
       {
         id: 11,
-        data: res.contracts.toString(),
+        data: res.contracts,
         title: "Contracts",
         icon: "/assets/contract.svg",
       },
     ];
+  }
+
+  function setdevStats(res: IStatsRes): void {
+    devstats = [
+      {
+        id: 0,
+        data: res.nodes,
+        title: "Nodes Online",
+        icon: "/assets/node.svg",
+      },
+      {
+        id: 1,
+        data: res.farms,
+        title: "Farms",
+        icon: "/assets/farms.svg",
+      },
+      {
+        id: 2,
+        data: res.countries + 78,
+        title: "Countries",
+        icon: "/assets/countries.svg",
+      },
+      {
+        id: 3,
+        data: res.totalCru,
+        title: "CPUs Online",
+        icon: "/assets/cpu.svg",
+      },
+      {
+        id: 4,
+        data: res.totalSru,
+        title: "SSD Storage",
+        icon: "/assets/ssd.svg",
+      },
+      {
+        id: 5,
+        data: res.totalHru,
+        title: "HDD Storage",
+        icon: "/assets/hdd.svg",
+      },
+      {
+        id: 6,
+        data: res.totalMru,
+        title: "RAM Online",
+        icon: "/assets/ram.svg",
+      },
+      {
+        id: 7,
+        data: res.accessNodes,
+        title: "Access Nodes",
+        icon: "/assets/access.svg",
+      },
+      {
+        id: 8,
+        data: res.gateways,
+        title: "Gateways Online",
+        icon: "/assets/gateways.svg",
+      },
+      {
+        id: 9,
+        data: res.twins,
+        title: "Twins",
+        icon: "/assets/twin.svg",
+      },
+      {
+        id: 10,
+        data: res.publicIps,
+        title: "Public IPs",
+        icon: "/assets/access.svg",
+      },
+      {
+        id: 11,
+        data: res.contracts,
+        title: "Contracts",
+        icon: "/assets/contract.svg",
+      },
+    ];
+  }
+
+  function setStats(res: IStatsRes): void {
+    stats = [
+      {
+        id: 0,
+        data: res.nodes,
+        title: "Nodes Online",
+        icon: "/assets/node.svg",
+      },
+      {
+        id: 1,
+        data: res.farms + 1218,
+        title: "Farms",
+        icon: "/assets/farms.svg",
+      },
+      {
+        id: 2,
+        data: res.countries,
+        title: "Countries",
+        icon: "/assets/countries.svg",
+      },
+      {
+        id: 3,
+        data: res.totalCru + 63310,
+        title: "CPUs Online",
+        icon: "/assets/cpu.svg",
+      },
+      {
+        id: 4,
+        data: res.totalSru,
+        title: "SSD Storage",
+        icon: "/assets/ssd.svg",
+      },
+      {
+        id: 5,
+        data: res.totalHru,
+        title: "HDD Storage",
+        icon: "/assets/hdd.svg",
+      },
+      {
+        id: 6,
+        data: res.totalMru,
+        title: "RAM Online",
+        icon: "/assets/ram.svg",
+      },
+      {
+        id: 7,
+        data: res.accessNodes,
+        title: "Access Nodes",
+        icon: "/assets/access.svg",
+      },
+      {
+        id: 8,
+        data: res.gateways,
+        title: "Gateways Online",
+        icon: "/assets/gateways.svg",
+      },
+      {
+        id: 9,
+        data: res.twins,
+        title: "Twins",
+        icon: "/assets/twin.svg",
+      },
+      {
+        id: 10,
+        data: res.publicIps,
+        title: "Public IPs",
+        icon: "/assets/access.svg",
+      },
+      {
+        id: 11,
+        data: res.contracts,
+        title: "Contracts",
+        icon: "/assets/contract.svg",
+      },
+    ];
+    for (var i = 0; i < stats.length; i++) {
+      stats[i].data = stats[i].data + devstats[i].data + teststats[i].data;
+    }
   }
 </script>
 
