@@ -1,10 +1,22 @@
 <script>
   import Card from "./Card.svelte";
+  import toTeraOrGiga from "../filters/toTeraOrGiga";
+
   export let card;
   export let primaryTitle = true;
   export let secondaryTitle = true;
   export let primaryDetails = true;
   export let secondaryDetails = false;
+  let data = card.data;
+
+  if (
+    card.title == "SSD Storage" ||
+    card.title == "HDD Storage" ||
+    card.title == "RAM Online"
+  ) {
+    data = toTeraOrGiga(data.toString());
+    console.log(data);
+  }
 </script>
 
 <Card>
@@ -16,11 +28,15 @@
     >
       <p>{card.title}</p>
     </div>
-    <div class="card-details" class:details-secondary={secondaryDetails} class:details-primary={primaryDetails}>
+    <div
+      class="card-details"
+      class:details-secondary={secondaryDetails}
+      class:details-primary={primaryDetails}
+    >
       <div>
-        <img src={card.icon} alt="">
+        <img src={card.icon} alt="" />
       </div>
-      <div class="card-data">{card.data}</div>
+      <div class="card-data">{data}</div>
     </div>
   </div>
 </Card>
@@ -43,7 +59,7 @@
     color: #353434b6;
   }
 
-  .card-data{
+  .card-data {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -67,7 +83,7 @@
     background-color: #4cbbd9;
   }
 
-  .details-primary{
+  .details-primary {
     background-color: #fff;
   }
 
