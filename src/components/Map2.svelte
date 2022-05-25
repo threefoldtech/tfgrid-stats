@@ -2,7 +2,6 @@
   import SvgMap from "./SvgMap.svelte";
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
-  import noOfNodesv3 from "../filters/noOfNodes";
 
   export let country = null;
   export let nodes = 0;
@@ -32,7 +31,7 @@
         noNodes_dev = noNodes_dev + 1;
       }
     }
-
+    nodes = nodes + noNodes_dev;
     const response_test = await fetch("https://gridproxy.test.grid.tf/nodes");
     const body_test = await response_test.json();
     for (var d of body_test) {
@@ -40,6 +39,8 @@
         noNodes_test = noNodes_test + 1;
       }
     }
+    nodes = nodes + noNodes_test;
+
     const response_main = await fetch("https://gridproxy.grid.tf/nodes");
     const body_main = await response_main.json();
     for (var d of body_main) {
@@ -47,27 +48,27 @@
         noNodes_main = noNodes_main + 1;
       }
     }
-    nodes = noNodes_main + noNodes_dev + noNodes_test;
+    nodes = noNodes_main + nodes;
 
-  //   fetch("https://explorer.grid.tf/api/v1/nodes")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // console.log(data.approved);
-  //       // for (var i =0; ) {
-  //       //   console.log(d.country);
-  //       //   if (d.country == country) {
-  //       //     console.log(d.country);
-  //       //     // NoNodes = NoNodes + 1;
-  //       //   }
-  //       // }
+    fetch("https://explorer.grid.tf/api/v1/nodes")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.data);
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i].location.country);
+          if (data[i].location.country == country) {
+            console.log(d.country);
+            NoNodes = NoNodes + 1;
+          }
+        }
 
-  //       // nodes = NoNodes + noNodes_v3;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       return [];
-  //     });
-  // };
+        nodes = NoNodes + nodes;
+      })
+      .catch((error) => {
+        console.log(error);
+        return [];
+      });
+  };
 
   const destroyTooltip = (e) => {
     if (e.target instanceof SVGPathElement) {
