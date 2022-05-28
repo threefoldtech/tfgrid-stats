@@ -3,7 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
 
-  export let country = null;
+  export let country: string = "";
   export let nodes = 0;
   let NoNodes = 0;
 
@@ -24,13 +24,14 @@
       el.style.top = e.screenY + "px";
     }
     country = e.target.getAttribute("title");
-    const response_dev = await fetch("https://gridproxy.dev.grid.tf/nodes");
+    const response_dev = await fetch("https://gridproxy.dev.grid.tf/stats");
     const body_dev = await response_dev.json();
-    for (var d of body_dev) {
-      if (d.country == country) {
-        noNodes_dev = noNodes_dev + 1;
-      }
+    let nodesDistribution = body_dev["nodesDistribution"];
+    if (nodesDistribution[country] != undefined) {
+      noNodes_dev = nodesDistribution[country];
+      console.log("noNodes_dev" + noNodes_dev);
     }
+
     nodes = nodes + noNodes_dev;
     const response_test = await fetch("https://gridproxy.test.grid.tf/nodes");
     const body_test = await response_test.json();
@@ -53,11 +54,8 @@
     fetch("https://explorer.grid.tf/api/v1/nodes")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
         for (var i = 0; i < data.length; i++) {
-          console.log(data[i].location.country);
           if (data[i].location.country == country) {
-            console.log(d.country);
             NoNodes = NoNodes + 1;
           }
         }
