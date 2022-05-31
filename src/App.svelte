@@ -1,40 +1,48 @@
 <script lang="ts">
-  import Map from "./components/Map2.svelte";
+  import { onMount } from "svelte";
+  import { fetchData, IStatsRes } from "./utils/fetchData";
   import CardList from "./components/CardList.svelte";
 
+  let data: IStatsRes;
+  let loading = true;
 
-  const handleHover = (e) => {
-    console.log(e.detail);
-  };
-
-  const destroyTooltip = (e) => {
-    console.log('destroyed', e.detail); 
-  }
+  onMount(async () => {
+    try {
+      data = await fetchData();
+    } catch (err) {
+      console.log("Error", err);
+    } finally {
+      loading = false;
+    }
+  });
 </script>
 
-
 <main>
-  <h2 class="node-title">Node Distribution</h2>
-  <div class="map-container">
-    <div class="map">
-      <Map on:handleHover={handleHover} on:destroyTooltip={destroyTooltip} />
+  {#if loading}
+    <div class:lds-dual-ring={loading} />
+  {:else if data}
+    <h2 class="node-title">Node Distribution</h2>
+    <div class="map-container">
+      <div class="map">
+        <tf-map nodes={JSON.stringify(data.nodesDistribution)} />
+      </div>
     </div>
-  </div>
 
-  
-  <div class="state-title">
-    <h2>Statistics</h2>
-  </div>
-  <CardList />
+    <div class="state-title">
+      <h2>Statistics</h2>
+    </div>
+    <CardList {data} />
+  {:else}
+    <p>Something went wrong!</p>
+  {/if}
 </main>
 
-
 <style>
-  main{
+  main {
     background-color: #ebe7e7;
   }
 
-  .map-container{
+  .map-container {
     display: flex;
     justify-content: center;
   }
@@ -42,7 +50,8 @@
     width: 65rem;
     display: inline-block;
   }
-  .state-title, .node-title {
+  .state-title,
+  .node-title {
     background-color: #ebe7e7;
     color: #353434b6;
   }
@@ -50,5 +59,30 @@
   h2 {
     margin: 0;
     padding: 1rem;
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid black;
+    border-color: black transparent black transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>

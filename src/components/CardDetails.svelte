@@ -15,7 +15,6 @@
     card.title == "RAM Online"
   ) {
     data = toTeraOrGiga(data.toString());
-    console.log(data);
   }
 </script>
 
