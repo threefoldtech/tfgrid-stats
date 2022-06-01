@@ -29,9 +29,9 @@ function merge(...objs: Object[]) {
 export async function fetchData() {
   // prettier-ignore
   const [{ data: dev }, { data: test }, { data: main }] = await Promise.all([
-    axios.get<IStatsRes>("https://gridproxy.dev.grid.tf/stats"),
-    axios.get<IStatsRes>("https://gridproxy.test.grid.tf/stats"),
-    axios.get<IStatsRes>("https://gridproxy.grid.tf/stats"),
+    axios.get<IStatsRes>("https://gridproxy.dev.grid.tf/stats?status=up"),
+    axios.get<IStatsRes>("https://gridproxy.test.grid.tf/stats?status=up"),
+    axios.get<IStatsRes>("https://gridproxy.grid.tf/stats?status=up"),
   ]);
 
   return {
