@@ -12,7 +12,13 @@
     } catch (err) {
       console.log("Error", err);
     } finally {
-      loading = false;
+      try {
+        data = await fetchData();
+      } catch (err) {
+        console.log("Error", err);
+      } finally {
+        loading = false;
+      }
     }
   });
 </script>
@@ -63,6 +69,7 @@
 
   .lds-dual-ring {
     display: inline-block;
+    margin: auto;
     width: 80px;
     height: 80px;
   }
