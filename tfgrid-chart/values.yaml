@@ -1,10 +1,10 @@
 replicaCount: 1
 
 image:
-  repository: mahmoudemmad/tfgrid-stats
+  repository: threefolddev/tfgrid-stats
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -25,27 +25,21 @@ securityContext:
   {}
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
   hosts:
-    - host: omda.com
+    - host: "domain.com"
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-
-  # For traefik 
-  # annotations:
-  #   kubernetes.io/ingress.class: traefik
-  #   ingress.kubernetes.io/ssl-passthrough: "true"
-  #   traefik.ingress.kubernetes.io/router.tls.certresolver: gridca
 
 resources:
   limits:
