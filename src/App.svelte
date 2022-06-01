@@ -10,15 +10,18 @@
     try {
       data = await fetchData();
     } catch (err) {
-      console.log("Error", err);
-    } finally {
+      console.log(
+        "Statistics couldn't load due to:",
+        err,
+        " . Retrying to Load Statistics."
+      );
       try {
         data = await fetchData();
       } catch (err) {
-        console.log("Error", err);
-      } finally {
-        loading = false;
+        console.log("Statistics couldn't load due to:", err);
       }
+    } finally {
+      loading = false;
     }
   });
 </script>
@@ -39,7 +42,7 @@
     </div>
     <CardList {data} />
   {:else}
-    <p>Something went wrong!</p>
+    <p>Statistics aren't loading probably, Please refresh.</p>
   {/if}
 </main>
 
