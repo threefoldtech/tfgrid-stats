@@ -3,7 +3,7 @@
 * by default we use nginx ingress controller.
 * if you want to use the ingress, you need to install the ingress controller.
 
-#### 2. Deploying the TFGrid Chart and set host domain_name
+#### 1. Deploying the TFGrid Chart and set host domain_name
 
 ```bash
     helm install <helm_name> ./tfgrid-stats/ --values ./tfgrid-stats/values.yaml --set ingress.hosts[0].host=<domain_name>
@@ -15,7 +15,7 @@
     curl -X GET http://<domain_name>/
 ```
 
-#### Using traefik ingress controller
+#### 3. Using traefik ingress controller
 
 ```yaml 
     # Make sure traefik is installed.
