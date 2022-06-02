@@ -1,12 +1,11 @@
 name: Build and push a new docker image based on project release tag.
 
 on:
-  create:
-    tags:
-      - v*
+  release:
+    types: [published]
 
 jobs:
-  release:
+  Build-and-push-docker-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +14,7 @@ jobs:
         id: previoustag
         uses: actions-ecosystem/action-get-latest-tag@v1
         with:
-          fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+          fallback: latest # Optional fallback tag to use when no tag can be found
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
