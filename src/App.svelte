@@ -27,17 +27,18 @@
   {#if loading}
     <div class:lds-dual-ring={loading} />
   {:else if data}
-    <h2 class="node-title">Node Distribution</h2>
+    <h2 class="node-title map-container">Node Distribution</h2>
     <div class="map-container">
       <div class="map">
-        <tf-map nodes={JSON.stringify(data.nodesDistribution)} />
+        <tf-map r="76" g="187" b="217" nodes={JSON.stringify(data.nodesDistribution)} />
       </div>
     </div>
-
+    <div class="map-container">
     <div class="state-title">
       <h2>Statistics</h2>
+      <CardList {data} />
     </div>
-    <CardList {data} />
+  </div>
   {:else}
     <p>Something went wrong!</p>
   {/if}
@@ -53,9 +54,14 @@
     justify-content: center;
   }
   .map {
-    width: 65rem;
+    width: 55rem;
     display: inline-block;
   }
+  
+  /* .state-title {
+    padding: 0 15rem;
+  } */
+
   .state-title,
   .node-title {
     background-color: #ebe7e7;
