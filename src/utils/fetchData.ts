@@ -26,13 +26,29 @@ function merge(...objs: Object[]) {
   }, {} as { [key: string]: number });
 }
 
+
+
+function fetchStats(url: string) {
+  return function _fetchStats(x = 0) {
+    return axios.get<IStatsRes>(url)
+    .then(({ data }) => data)
+    .catch((error) => {
+      if (x >= 3) console.log("Devnet might be down");
+      else _fetchStats(x + 1);
+    }) as Promise<IStatsRes>;
+  }
+}
+
+
+
 export async function fetchData() {
-  // prettier-ignore
-  const [{ data: dev }, { data: test }, { data: main }] = await Promise.all([
-    axios.get<IStatsRes>("https://gridproxy.dev.grid.tf/stats?status=up"),
-    axios.get<IStatsRes>("https://gridproxy.test.grid.tf/stats?status=up"),
-    axios.get<IStatsRes>("https://gridproxy.grid.tf/stats?status=up"),
-  ]);
+
+  // console.log(await fetchStatsDev()) ;
+  const dev = await fetchStats("https://gridproxy.dev.grid.tf/stats?status=up")();
+  const test = await fetchStats("https://gridproxy.test.grid.tf/stats?status=up")();
+  const main = await fetchStats("https://gridproxy.grid.tf/stats?status=up")();
+
+
 
   return {
     ...merge(dev, test, main),
