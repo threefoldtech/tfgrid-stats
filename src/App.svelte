@@ -57,6 +57,7 @@
   .map-container {
     display: flex;
     justify-content: center;
+    padding: 0.7rem 0rem;
   }
   .map {
     width: 55rem;
@@ -77,7 +78,8 @@
 
   h2 {
     margin: 0;
-    padding: 1rem;
+    padding: 0.6rem;
+    font-weight: 400;
   }
 
   .lds-dual-ring {
