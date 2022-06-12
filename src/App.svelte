@@ -30,15 +30,20 @@
     <h2 class="node-title map-container">Node Distribution</h2>
     <div class="map-container">
       <div class="map">
-        <tf-map r="76" g="187" b="217" nodes={JSON.stringify(data.nodesDistribution)} />
+        <tf-map
+          r="76"
+          g="187"
+          b="217"
+          nodes={JSON.stringify(data.nodesDistribution)}
+        />
       </div>
     </div>
     <div class="map-container">
-    <div class="state-title">
-      <h2>Statistics</h2>
-      <CardList {data} />
+      <div class="state-title">
+        <h2>Statistics</h2>
+        <CardList {data} />
+      </div>
     </div>
-  </div>
   {:else}
     <p>Something went wrong!</p>
   {/if}
@@ -57,15 +62,17 @@
     width: 55rem;
     display: inline-block;
   }
-  
+
   /* .state-title {
     padding: 0 15rem;
   } */
 
   .state-title,
   .node-title {
-    background-color: #ebe7e7;
-    color: #353434b6;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   h2 {
