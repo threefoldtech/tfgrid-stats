@@ -33,7 +33,7 @@ function fetchStats(url: string) {
     return axios.get<IStatsRes>(url)
     .then(({ data }) => data)
     .catch((error) => {
-      if (x >= 3) console.log("Devnet might be down");
+      if (x >= 2) console.log("The network might be down");
       else _fetchStats(x + 1);
     }) as Promise<IStatsRes>;
   }
@@ -51,9 +51,9 @@ export async function fetchData() {
 
 
   return {
-    ...merge(dev, test, main),
+    ...merge(dev || {}, test || {}, main || {}),
     nodesDistribution: merge(
-      dev.nodesDistribution,
+      dev.nodesDistribution || {},
       test.nodesDistribution || {},
       main.nodesDistribution || {}
     ),

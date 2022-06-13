@@ -7,14 +7,19 @@
   let loading = true;
   let error: string;
 
-  $: refresh = async () => {
+  $: disabled = false;
+
+  let refresh = async () => {
     try {
+      disabled = true;
+
       data = await fetchData();
     } catch (err) {
       error = err;
       console.log("Statistics couldn't load due to:", err);
     } finally {
       loading = false;
+      disabled = false;
     }
   };
 
@@ -24,28 +29,30 @@
 </script>
 
 <main>
+  <div>
+    <button class="refresh" on:click={refresh} {disabled} class:disabled>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        class="bi bi-arrow-clockwise"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+        />
+        <path
+          d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+        />
+      </svg></button
+    >
+  </div>
   {#if loading}
     <div class:lds-dual-ring={loading} />
   {:else if data}
     <div>
-      <button class="refresh" on:click={refresh}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          fill="currentColor"
-          class="bi bi-arrow-clockwise"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
-          />
-          <path
-            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
-          />
-        </svg></button
-      >
       <h2 class="node-title">Node Distribution</h2>
     </div>
     <div class="map-container">
@@ -64,36 +71,54 @@
 </main>
 
 <style>
+  p {
+    margin: 0px;
+    padding: 25px;
+  }
   .refresh {
-    /* display: block;
-    margin-left: auto;
-    margin-right: 1rem;*/
     border: none;
-    padding: 1.5rem;
-    background: transparent;
+    background: #333;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
     float: right;
+    color: white;
+  }
+  .disabled {
+    background-color: rgba(221, 221, 221, 0.633);
   }
   main {
     background-color: #ebe7e7;
+    min-height: 100vh;
   }
 
   .map-container {
     display: flex;
     justify-content: center;
+    padding: 0.7rem 0rem;
   }
   .map {
-    width: 65rem;
+    width: 55rem;
     display: inline-block;
   }
+
   .state-title,
   .node-title {
-    background-color: #ebe7e7;
-    color: #353434b6;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .refresh-div {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
   }
 
   h2 {
     margin: 0;
-    padding: 1rem;
+    padding: 0.6rem;
+    font-weight: 400;
   }
 
   .lds-dual-ring {
@@ -104,14 +129,18 @@
   }
   .lds-dual-ring:after {
     content: " ";
-    display: block;
+    display: inline-block;
     width: 64px;
     height: 64px;
-    margin: 8px;
+    margin: auto;
     border-radius: 50%;
     border: 6px solid black;
     border-color: black transparent black transparent;
     animation: lds-dual-ring 1.2s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   @keyframes lds-dual-ring {
     0% {
