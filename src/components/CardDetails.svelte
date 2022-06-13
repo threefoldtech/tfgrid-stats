@@ -46,7 +46,7 @@
   }
   .card {
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 0fr 1fr;
   }
 
   .card-details {
@@ -62,13 +62,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 28px;
+    font-size: 20px;
   }
   .title {
     display: flex;
     align-items: center;
     justify-content: end;
-    height: 2.5rem;
+    height: 2rem;
     color: #fff;
     font-weight: 500;
     text-align: end;
