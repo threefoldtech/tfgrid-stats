@@ -52,13 +52,7 @@
   {#if loading}
     <div class:lds-dual-ring={loading} />
   {:else if data}
-<<<<<<< HEAD
-    <div>
-      <h2 class="node-title">Node Distribution</h2>
-    </div>
-=======
     <h2 class="node-title map-container">Node Distribution</h2>
->>>>>>> 53ea1d9b9d8a42f1c00e420a10da1411c4952313
     <div class="map-container">
       <div class="map">
         <tf-map
@@ -112,27 +106,12 @@
     display: inline-block;
   }
 
-<<<<<<< HEAD
-=======
-  /* .state-title {
-    padding: 0 15rem;
-  } */
-
->>>>>>> 53ea1d9b9d8a42f1c00e420a10da1411c4952313
   .state-title,
   .node-title {
     background-color: #333;
     color: #fff;
     text-align: center;
     margin-bottom: 1rem;
-<<<<<<< HEAD
-  }
-  .refresh-div {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-=======
->>>>>>> 53ea1d9b9d8a42f1c00e420a10da1411c4952313
   }
 
   h2 {
