@@ -85,6 +85,7 @@
     float: right;
     color: white;
     height: 3.1rem;
+    border-radius: 0;
   }
   .disabled {
     background-color: rgba(221, 221, 221, 0.633);
