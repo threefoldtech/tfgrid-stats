@@ -82,11 +82,9 @@
   .refresh {
     border: none;
     background: #333;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    padding-top: 0.5rem;
     float: right;
     color: white;
+    height: 3.1rem;
   }
   .disabled {
     background-color: rgba(221, 221, 221, 0.633);
