@@ -82,9 +82,10 @@
   .refresh {
     border: none;
     background: #333;
-    float: right;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.2rem;
     color: white;
-    height: 3.1rem;
     border-radius: 0;
   }
   .disabled {
