@@ -23,3 +23,9 @@
     annotations:
       kubernetes.io/ingress.class: traefik
 ```
+
+#### 4. Deploying with nginx ingress and https
+
+```bash 
+    helm install <helm_name> ./tfgrid-stats/ --values ./tfgrid-stats/values.yaml --set ingress.hosts[0].host=<domain_name> --set ingress.tls[0].hosts[0]=<domain_name> --set ingress.tls[0].secretName=<secret_name>
+```
