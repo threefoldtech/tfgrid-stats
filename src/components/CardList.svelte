@@ -36,7 +36,7 @@
       {
         id: 3,
         data: data.totalCru,
-        title: "CPUs Online",
+        title: "CPUs",
         icon: "/assets/cpu.svg",
       },
       {
@@ -58,7 +58,7 @@
       {
         id: 6,
         data: data.totalMru,
-        title: "RAM Online",
+        title: "RAM",
         icon: "/assets/ram.svg",
       },
       {
