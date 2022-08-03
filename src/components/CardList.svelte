@@ -17,19 +17,19 @@
     stats = [
       {
         id: 0,
-        data: data.nodes + 674,
+        data: data.nodes + 651,
         title: "Nodes Online",
         icon: "/assets/node.svg",
       },
       {
         id: 1,
-        data: data.farms + 1820,
+        data: data.farms + 1775,
         title: "Farms",
         icon: "/assets/farms.svg",
       },
       {
         id: 2,
-        data: data.countries + 74,
+        data: data.countries,
         title: "Countries",
         icon: "/assets/countries.svg",
       },
@@ -69,7 +69,7 @@
       },
       {
         id: 8,
-        data: data.gateways + 11,
+        data: data.gateways + 8,
         title: "Gateways Online",
         icon: "/assets/gateways.svg",
       },
