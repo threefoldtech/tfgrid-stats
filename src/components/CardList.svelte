@@ -58,7 +58,7 @@
       {
         id: 6,
         data: data.totalMru,
-        title: "RAM",
+        title: "RAM Online",
         icon: "/assets/ram.svg",
       },
       {
