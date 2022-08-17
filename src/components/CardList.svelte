@@ -35,7 +35,7 @@
       },
       {
         id: 3,
-        data: data.totalCru,
+        data: data.totalCru + 14438,
         title: "CPUs",
         icon: "/assets/cpu.svg",
       },
