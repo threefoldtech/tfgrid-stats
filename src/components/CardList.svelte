@@ -58,7 +58,7 @@
       {
         id: 6,
         data: data.totalMru,
-        title: "RAM Online",
+        title: "RAM",
         icon: "/assets/ram.svg",
       },
       {
@@ -70,7 +70,7 @@
       {
         id: 8,
         data: data.gateways + 8,
-        title: "Gateways Online",
+        title: "Gateways",
         icon: "/assets/gateways.svg",
       },
       {
