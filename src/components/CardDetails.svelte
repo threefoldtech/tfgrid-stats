@@ -12,7 +12,7 @@
   if (
     card.title == "SSD Storage" ||
     card.title == "HDD Storage" ||
-    card.title == "RAM Online"
+    card.title == "RAM"
   ) {
     data = toTeraOrGiga(data.toString());
   }
