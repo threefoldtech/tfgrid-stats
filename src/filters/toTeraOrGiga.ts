@@ -8,14 +8,14 @@ export default function toTeraOrGiga(value?: string) {
 
   if (val < giga) return val.toString();
 
-  let gb = val / giga;
+  let storageUnit = val / giga;
 
-  if (gb < 1024) return `${gb.toFixed(0)} GB`;
+  if (storageUnit < 1024) return `${storageUnit.toFixed(0)} GB`;
 
-  gb = gb / 1024;
+  storageUnit = storageUnit / 1024;
 
-  if (gb < 1024) return `${gb.toFixed(0)} TB`;
+  if (storageUnit < 1024) return `${storageUnit.toFixed(0)} TB`;
 
-  gb = gb / 1024;
-  return `${gb.toFixed(0)} PB`;
+  storageUnit = storageUnit / 1024;
+  return `${storageUnit.toFixed(0)} PB`;
 }
