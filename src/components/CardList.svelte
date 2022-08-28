@@ -17,13 +17,13 @@
     stats = [
       {
         id: 0,
-        data: data.nodes + 651,
+        data: data.nodes + 497,
         title: "Nodes Online",
         icon: "/assets/node.svg",
       },
       {
         id: 1,
-        data: data.farms + 1775,
+        data: data.farms + 1777,
         title: "Farms",
         icon: "/assets/farms.svg",
       },
@@ -35,7 +35,7 @@
       },
       {
         id: 3,
-        data: data.totalCru + 14438,
+        data: data.totalCru + 7804,
         title: "CPUs",
         icon: "/assets/cpu.svg",
       },
