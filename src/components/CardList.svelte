@@ -17,13 +17,13 @@
     stats = [
       {
         id: 0,
-        data: data.nodes + 497,
+        data: data.nodes,
         title: "Nodes Online",
         icon: "/assets/node.svg",
       },
       {
         id: 1,
-        data: data.farms + 1777,
+        data: data.farms,
         title: "Farms",
         icon: "/assets/farms.svg",
       },
@@ -35,23 +35,21 @@
       },
       {
         id: 3,
-        data: data.totalCru + 7804,
+        data: data.totalCru,
         title: "CPUs",
         icon: "/assets/cpu.svg",
       },
       {
         id: 4,
         data:
-          data.totalSru +
-          Math.round(1214.02 * 1e7) * 1e2 * 1e2 * 10 +
-          Math.round(2328 * 1e7) * 1e2,
+          data.totalSru,
         title: "SSD Storage",
         icon: "/assets/ssd.svg",
       },
       {
         id: 5,
         data:
-          data.totalHru + Math.round(54.86 * 1e7) * 1e2 * 1e2 * 10 * 1e2 * 10,
+          data.totalHru,
         title: "HDD Storage",
         icon: "/assets/hdd.svg",
       },
@@ -69,7 +67,7 @@
       },
       {
         id: 8,
-        data: data.gateways + 8,
+        data: data.gateways,
         title: "Gateways",
         icon: "/assets/gateways.svg",
       },
