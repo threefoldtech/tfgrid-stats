@@ -62,7 +62,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 20px;
+    font-size: 1.25rem;
   }
   .title {
     display: flex;
@@ -84,6 +84,7 @@
 
   .details-primary {
     background-color: #fff;
+    height: 2rem;
   }
 
   .details-secondary {
