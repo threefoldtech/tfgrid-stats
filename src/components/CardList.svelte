@@ -9,22 +9,16 @@
     title: string;
     icon: string;
   }
-  let countries = new Set();
 
   export let data: IStatsRes;
   let stats: IStats[] = [];
-  function nodesDistribution() : number {
 
+  function CountryCount(): number {
+    
+    let countries = new Set(Object.keys(data.nodesDistribution));
 
-    let keys = Object.keys(data.nodesDistribution)
-    for(const key of keys){
-      countries.add(key);
-
-    }
     return countries.size;
-  
   }
-  
 
   $: if (data)
     stats = [
@@ -42,7 +36,7 @@
       },
       {
         id: 2,
-        data:   nodesDistribution(),
+        data: CountryCount(),
         title: "Countries",
         icon: "/assets/countries.svg",
       },
