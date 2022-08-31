@@ -13,6 +13,13 @@
   export let data: IStatsRes;
   let stats: IStats[] = [];
 
+  function CountryCount(): number {
+    
+    let countries = new Set(Object.keys(data.nodesDistribution));
+
+    return countries.size;
+  }
+
   $: if (data)
     stats = [
       {
@@ -29,7 +36,7 @@
       },
       {
         id: 2,
-        data: data.countries,
+        data: CountryCount(),
         title: "Countries",
         icon: "/assets/countries.svg",
       },
@@ -41,15 +48,13 @@
       },
       {
         id: 4,
-        data:
-          data.totalSru,
+        data: data.totalSru,
         title: "SSD Storage",
         icon: "/assets/ssd.svg",
       },
       {
         id: 5,
-        data:
-          data.totalHru,
+        data: data.totalHru,
         title: "HDD Storage",
         icon: "/assets/hdd.svg",
       },
