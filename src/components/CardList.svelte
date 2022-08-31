@@ -9,9 +9,22 @@
     title: string;
     icon: string;
   }
+  let countries = new Set();
 
   export let data: IStatsRes;
   let stats: IStats[] = [];
+  function nodesDistribution() : number {
+
+
+    let keys = Object.keys(data.nodesDistribution)
+    for(const key of keys){
+      countries.add(key);
+
+    }
+    return countries.size;
+  
+  }
+  
 
   $: if (data)
     stats = [
@@ -29,7 +42,7 @@
       },
       {
         id: 2,
-        data: data.countries,
+        data:   nodesDistribution(),
         title: "Countries",
         icon: "/assets/countries.svg",
       },
@@ -41,15 +54,13 @@
       },
       {
         id: 4,
-        data:
-          data.totalSru,
+        data: data.totalSru,
         title: "SSD Storage",
         icon: "/assets/ssd.svg",
       },
       {
         id: 5,
-        data:
-          data.totalHru,
+        data: data.totalHru,
         title: "HDD Storage",
         icon: "/assets/hdd.svg",
       },

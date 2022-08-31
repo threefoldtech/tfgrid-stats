@@ -12,7 +12,6 @@
   let refresh = async () => {
     try {
       disabled = true;
-
       data = await fetchData();
     } catch (err) {
       error = err;
