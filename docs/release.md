@@ -2,9 +2,9 @@
 
 To create a new release there are some steps is required:
 
-## 1. Update Charts file
+## 1. **Update Charts file**
 
-In [charts.yaml](../tfgrid-stats/Chart.yaml) replace the value of `appVersion` with the new release tag.
+In [charts.yaml](../tfgrid-stats/Chart.yaml) replace the value of `appVersion` with the new release tag. Then, in [values.yaml](../tfgrid-stats/values.yaml) change the tag version with the new release tag.
 
   ````yaml
   appVersion: "x.x.x"
@@ -12,7 +12,7 @@ In [charts.yaml](../tfgrid-stats/Chart.yaml) replace the value of `appVersion` w
 
 ## 2. **Create a new release**
 
-  create a new release with same value of `appVersion` in `charts.yaml`.
+  Create a new release with the new tag added in `appVersion` & `Charts.yaml`.
   
   > You can find more details about creating a new release in [Release projects](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
   
