@@ -1,4 +1,4 @@
-# Weblets workflows
+# TF Grid Stats workflows
 
 There are some pipliens to make sure everything work fine, here is an idea about them:
 

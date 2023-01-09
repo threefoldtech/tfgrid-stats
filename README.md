@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Grid Stats is a web application created to replace explorer.threefold.io with a simple page showing a capacity map + statistics. In the map, you get to see node distripution with each node location highlighted. While in Statistics section, general details about the nodes are being displayed like online nodes, farms count, total storage used, gateways ...etc.
+Grid Stats is a web application created to replace explorer.threefold.io with a simple page showing a capacity map + statistics. In the map, you get to see node distribution with each node location highlighted. While in Statistics section, general details about the nodes are being displayed like online nodes, farms count, total storage used, gateways ...etc.
 
 ## Installation
 
