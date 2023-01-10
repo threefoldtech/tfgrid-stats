@@ -21,7 +21,14 @@ In [values.yaml](../tfgrid-stats/values.yaml) change the tag with the new releas
 ## 3. **Create a new release**
 
   Create a new release with the new tag added in `appVersion` & `Charts.yaml`.
-  
+
+  1. On GitHub.com, navigate to the main page of the repository.
+  2. To the right of the list of files, click Releases.
+  3. Click Draft a new release.
+  4. Click Choose a tag, type a version number for your release, and press Enter. (Make sure the tag matches the one in values.yaml & Chart.yaml)
+  5. Add a description for your release, you can automatically generate your release notes by clicking Generate release notes.
+  6. Click Publish release. To work on the release later, click Save draft.
+
   > You can find more details about creating a new release in [Release projects](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
   
 ## 4. **Create a new issue on [tf_operations](https://github.com/threefoldtech/tf_operations)**

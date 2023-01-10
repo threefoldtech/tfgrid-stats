@@ -26,6 +26,7 @@ Install the dependencies...
 Before running the Grid Stats, in your terminal move to the project directory, then install the required dependencies using
 
 ```bash
+cd tfgrid_stats
 npm install
 ```
 
