@@ -44,6 +44,8 @@ To create an optimised version of the app:
 npm run build
 ```
 
+This will generate the production build in the `public` directory, which can be served using [Caddy](https://caddyserver.com/) or [NGINX](https://www.nginx.com/)
+
 ## Related Documentations
 
 - [Configure the editor/IDE](./docs/editor_config.md)
