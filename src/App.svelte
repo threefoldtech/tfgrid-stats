@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { fetchData, IStatsRes } from "./utils/fetchData";
   import CardList from "./components/CardList.svelte";
+  import Map from './components/Map.svelte';
 
   let data: IStatsRes;
   let loading = true;
@@ -27,7 +28,7 @@
   });
 </script>
 
-<main>
+<!-- <main>
   <div>
     <button class="refresh" on:click={refresh} {disabled} class:disabled>
       <svg
@@ -71,10 +72,18 @@
   {:else}
     <p>Statistics couldn't load due to: {error}</p>
   {/if}
+</main> -->
+
+<main>
+  <Map />
 </main>
 
 <style>
-  p {
+  main {
+    background-color: #ebe7e7;
+    min-height: 100vh;
+  }
+  /* p {
     margin: 0px;
     padding: 25px;
   }
@@ -89,11 +98,7 @@
   }
   .disabled {
     background-color: rgba(221, 221, 221, 0.633);
-  }
-  main {
-    background-color: #ebe7e7;
-    min-height: 100vh;
-  }
+  } */
 
   .map-container {
     display: flex;
