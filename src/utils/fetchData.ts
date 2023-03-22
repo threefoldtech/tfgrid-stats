@@ -1,4 +1,5 @@
 import axios from "axios";
+import { writable } from 'svelte/store';
 
 export interface IStatsRes {
   nodes: number;
@@ -14,6 +15,12 @@ export interface IStatsRes {
   twins: number;
   contracts: number;
   nodesDistribution: { [country: string]: number };
+}
+
+export interface IStatus{
+  dev: boolean;
+  test: boolean;
+  main: boolean
 }
 
 function merge(...objs: Object[]) {
@@ -41,21 +48,31 @@ function fetchStats(url: string) {
 
 
 
+export let status = writable <IStatus>({
+  dev: false,
+  test: false,
+  main: false
+}) 
+
 export async function fetchData() {
 
-  // console.log(await fetchStatsDev()) ;
   const dev = await fetchStats("https://gridproxy.dev.grid.tf/stats?status=up")();
   const test = await fetchStats("https://gridproxy.test.grid.tf/stats?status=up")();
   const main = await fetchStats("https://gridproxy.grid.tf/stats?status=up")();
+  
+  status.set({
+    dev: !!dev,
+    test: !!test,
+    main: !!main
+  })
 
-
-
+  
   return {
     ...merge(dev || {}, test || {}, main || {}),
     nodesDistribution: merge(
-      dev.nodesDistribution || {},
-      test.nodesDistribution || {},
-      main.nodesDistribution || {}
+      dev?.nodesDistribution || {},
+      test?.nodesDistribution || {},
+      main?.nodesDistribution || {}
     ),
   } as IStatsRes;
 }

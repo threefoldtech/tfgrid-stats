@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import { fetchData, IStatsRes } from "./utils/fetchData";
   import CardList from "./components/CardList.svelte";
+  import { status } from './utils/fetchData';
+
 
   let data: IStatsRes;
   let loading = true;
@@ -12,7 +14,7 @@
   let refresh = async () => {
     try {
       disabled = true;
-      data = await fetchData();
+      data = await fetchData();      
     } catch (err) {
       error = err;
       console.log("Statistics couldn't load due to:", err);
@@ -25,6 +27,11 @@
   onMount(async () => {
     refresh();
   });
+
+  function networks(){
+    const networks = Object.entries($status).filter((x) => x[1]).map(x => x[0]);
+    return `Please note that the current node distribution is for ${networks.join(", ")}.`
+  }
 </script>
 
 <main>
@@ -62,6 +69,9 @@
         />
       </div>
     </div>
+    <div class="networks">
+      <p>{networks()}</p>
+    </div>
     <div class="map-container">
       <div class="state-title">
         <h2>Statistics</h2>
@@ -69,7 +79,7 @@
       </div>
     </div>
   {:else}
-    <p>Statistics couldn't load due to: {error}</p>
+    <p>Something went wrong. Please try again later.</p>
   {/if}
 </main>
 
@@ -105,6 +115,11 @@
     display: inline-block;
   }
 
+  .networks{
+    position: fixed;
+    top: 5%;
+    font-size: 1.1rem;
+  }
   .state-title,
   .node-title {
     background-color: #333;
