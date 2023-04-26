@@ -55,28 +55,23 @@ export let status = writable <IStatus>({
 }) 
 
 export async function fetchData() {
-  try {
-    const dev = await fetchStats("https://gridproxy.dev.grid.tf/stats?status=up")();
-    const test = await fetchStats("https://gridproxy.test.grid.tf/stats?status=up")();
-    const main = await fetchStats("https://gridproxy.grid.tf/stats?status=up")();
-    
-    status.set({
-      dev: !!dev,
-      test: !!test,
-      main: !!main
-    })
+  const dev = await fetchStats("https://gridproxy.dev.grid.tf/stats?status=up")();
+  const test = await fetchStats("https://gridproxy.test.grid.tf/stats?status=up")();
+  const main = await fetchStats("https://gridproxy.grid.tf/stats?status=up")();
   
-    
-    return {
-      ...merge(dev || {}, test || {}, main || {}),
-      nodesDistribution: merge(
-        dev?.nodesDistribution || {},
-        test?.nodesDistribution || {},
-        main?.nodesDistribution || {}
-      ),
-    } as IStatsRes;
-  } 
-  catch (error) {
-    throw new Error(error)
-  }
+  status.set({
+    dev: !!dev,
+    test: !!test,
+    main: !!main
+  })
+
+  
+  return {
+    ...merge(dev || {}, test || {}, main || {}),
+    nodesDistribution: merge(
+      dev?.nodesDistribution || {},
+      test?.nodesDistribution || {},
+      main?.nodesDistribution || {}
+    ),
+  } as IStatsRes;
 }
